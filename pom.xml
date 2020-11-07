@@ -1,0 +1,81 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<parent>
+		<groupId>org.springframework.boot</groupId>
+		<artifactId>spring-boot-starter-parent</artifactId>
+		<version>2.3.0.RELEASE</version>
+	</parent>
+
+	<groupId>fr.entoria</groupId>
+	<artifactId>cleva-request-parent</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<name>cleva-request-parent</name>
+	<description>Parent for cleva request in mirror base</description>
+
+	<packaging>pom</packaging>
+
+	<build>
+		<plugins>
+			<plugin>
+				<artifactId>maven-release-plugin</artifactId>
+				<version>3.0.0-M1</version>
+			</plugin>
+		</plugins>
+	</build>
+
+	<dependencyManagement>
+		<dependencies>
+			<!-- SWAGGER -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger2</artifactId>
+				<version>2.9.2</version>
+			</dependency>
+			<!-- SWAGGER UI -->
+			<dependency>
+				<groupId>io.springfox</groupId>
+				<artifactId>springfox-swagger-ui</artifactId>
+				<version>2.9.2</version>
+			</dependency>
+			<!-- COMMONS VALIDATOR -->
+			<dependency>
+				<groupId>commons-validator</groupId>
+				<artifactId>commons-validator</artifactId>
+				<version>1.7</version>
+			</dependency>
+			<!-- CLEVA REQUEST MAPPING -->
+			<dependency>
+				<groupId>fr.entoria</groupId>
+				<artifactId>cleva-request-mapping</artifactId>
+				<version>${project.version}</version>
+			</dependency>
+
+		</dependencies>
+	</dependencyManagement>
+
+
+	<scm>
+		<connection>scm:git:<!-- Your Git Project path --></connection>
+		<developerConnection>scm:git:<!-- Your Git Project path --></developerConnection>
+	</scm>
+
+	<distributionManagement>
+		<repository>
+			<id>deployer</id>
+			<name>release customer project</name>
+			<url><!-- Nexus URL path to releases repository --></url>
+		</repository>
+		<snapshotRepository>
+			<id>deployer</id>
+			<name>snapshot customer project</name>
+			<url><!-- Nexus URL path to releases repository --></url>
+		</snapshotRepository>
+	</distributionManagement>
+	<modules>
+		<module>cleva-request-api</module>
+		<module>cleva-request-mapping</module>
+	</modules>
+</project>
