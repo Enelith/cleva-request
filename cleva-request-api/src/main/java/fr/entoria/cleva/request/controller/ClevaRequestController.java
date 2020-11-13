@@ -10,6 +10,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import ch.qos.logback.classic.Logger;
@@ -41,6 +42,17 @@ public class ClevaRequestController {
 
     @GetMapping(path = "retrievePolicesByPoliciesNumber/{listId}")
     public ResponseEntity<?> retrievePolicesByPoliciesNumber(@PathVariable("listId") String sListId) {
+	logger.info("- Retrieve Policies from Cleva");
+	
+	ClevaRequestApiResponse response = new ClevaRequestApiResponse();
+	response.setCode(HttpStatus.OK);
+	response.setResult(clevaFPolicesBusiness.retrievePolicesByPoliciesNumber(Arrays.asList(sListId.split(","))));
+
+	return new ResponseEntity<>(response, HttpStatus.OK);
+    }
+
+    @GetMapping(path = "getPolicesByPoliciesNumber")
+    public ResponseEntity<?> getPolicesByPoliciesNumber(@RequestParam(name="listId") String sListId) {
 	logger.info("- Get Policies from Cleva");
 	
 	ClevaRequestApiResponse response = new ClevaRequestApiResponse();

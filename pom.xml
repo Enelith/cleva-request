@@ -71,7 +71,7 @@
 		<snapshotRepository>
 			<id>deployer</id>
 			<name>snapshot customer project</name>
-			<url><!-- Nexus URL path to releases repository --></url>
+			<url><!-- Nexus URL path to snapshots repository --></url>
 		</snapshotRepository>
 	</distributionManagement>
 	<modules>
